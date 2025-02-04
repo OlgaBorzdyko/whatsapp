@@ -1,0 +1,17 @@
+{
+  "title": "English language",
+  "Add new row": "New Row",
+  "Lari amount": "Lari amount",
+  "Enter amount": "Enter amount",
+  "Select currency": "Select currency",
+  "Select date": "Select date",
+  "Payment per year": "Payment per year",
+  "Remember sum": "Remember sum",
+  "lari": "lari",
+
+  "select": {
+    "usd": "US Dollar",
+    "eur": "Euro",
+    "rub":"Russian Ruble"
+  }
+}

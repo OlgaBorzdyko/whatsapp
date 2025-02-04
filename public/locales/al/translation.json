@@ -1,0 +1,17 @@
+{
+  "title": "Shqiptare",
+  "Add new row": "Linja e re",
+  "Lari amount": "Shuma në GEL",
+  "Enter amount": "Shkruani shumën",
+  "Select currency": "Zgjidhni monedhën",
+  "Select date": "Zgjidhni datën",
+  "Payment per year": "pagesë në vit",
+  "Remember sum": "Mbani mend shumën",
+  "lari": "GEL",
+
+  "select": {
+    "usd": "Dollar amerikan",
+    "eur": "Euro",
+    "rub":"Rubla ruse"
+  }
+}
