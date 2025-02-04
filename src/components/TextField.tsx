@@ -6,7 +6,7 @@ interface TextFieldFilterProps {
   onSubmit(): void
   value: string
 }
-export const TextFieldFilter: FC<TextFieldFilterProps> = ({
+export const TextFieldComponent: FC<TextFieldFilterProps> = ({
   label,
   onChange,
   onSubmit,
@@ -28,4 +28,4 @@ export const TextFieldFilter: FC<TextFieldFilterProps> = ({
     />
   </Grid>
 )
-export default TextFieldFilter
+export default TextFieldComponent
