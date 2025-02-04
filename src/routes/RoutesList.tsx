@@ -1,15 +1,26 @@
 import DefaultLayout from 'layouts/DefaultLayout'
-import ChatPage from '../components/AuthorizationResponse'
+import { createBrowserRouter } from 'react-router-dom'
+import AuthorizationResponse from "../components/AuthorizationResponse";
 
-const routes = [
+import ChatPage from '../pages/ChatPage'
+
+const RoutesList = createBrowserRouter(
+  [
+    {
+      path: '/',
+      element: <DefaultLayout />,
+      children: [
+        { path: '/', element: <AuthorizationResponse /> },
+        { path: '/chat', element: <ChatPage /> },
+
+        { path: '*', element: <AuthorizationResponse /> }
+      ]
+    }
+  ],
   {
-    path: '/',
-    element: <DefaultLayout />,
-    children: [
-      { path: '/', element: <ChatPage /> },
-      { path: '*', element: <ChatPage /> }
-    ]
+    future: {
+      v7_relativeSplatPath: true
+    }
   }
-]
-
-export default routes
+)
+export default RoutesList

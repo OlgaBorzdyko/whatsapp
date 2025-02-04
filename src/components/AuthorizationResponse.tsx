@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
 
-import { getStatusData } from '../services/fetch'
 import AuthorizationPage from '../pages/AuthorizationPage'
+import { getStatusData } from '../services/fetch'
 
 const AuthorizationResponse: FC = () => {
   const [response, setResponse] = useState<any>(null)

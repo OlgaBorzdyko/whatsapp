@@ -1,18 +1,23 @@
 import { Button } from '@mui/material'
-import React, { useState } from 'react'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import TextFieldFilter from '../components/TextField'
 
 const AuthorizationPage = ({
   onSubmit
 }: {
-  onSubmit: (id: string, token: string) => void
+  onSubmit?: (id: string, token: string) => void
 }) => {
   const [userId, setUserId] = useState('')
   const [userToken, setUserToken] = useState('')
+  const navigate = useNavigate()
 
   const handleSubmit = () => {
-    onSubmit(userId, userToken)
+    if (onSubmit) {
+      onSubmit(userId, userToken)
+    }
+    navigate('/chat')
   }
 
   return (
