@@ -1,5 +1,5 @@
 import DefaultLayout from 'layouts/DefaultLayout'
-import ChatPage from '../pages/ChatPage'
+import ChatPage from '../components/AuthorizationResponse'
 
 const routes = [
   {

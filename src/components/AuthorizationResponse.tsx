@@ -1,9 +1,9 @@
 import { FC, useState } from 'react'
 
 import { getStatusData } from '../services/fetch'
-import AuthorizationPage from './AuthorizationPage'
+import AuthorizationPage from '../pages/AuthorizationPage'
 
-const ChatPage: FC = () => {
+const AuthorizationResponse: FC = () => {
   const [response, setResponse] = useState<any>(null)
 
   const fetchData = async (userId: string, userToken: string) => {
@@ -18,4 +18,4 @@ const ChatPage: FC = () => {
   )
 }
 
-export default ChatPage
+export default AuthorizationResponse
