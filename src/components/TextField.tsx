@@ -1,12 +1,12 @@
 import { Grid, TextField } from '@mui/material'
 import { FC } from 'react'
-interface TextFieldFilterProps {
+interface TextFieldProps {
   label?: string
   onChange(value: string): void
   onSubmit(): void
   value: string
 }
-export const TextFieldComponent: FC<TextFieldFilterProps> = ({
+export const TextFieldComponent: FC<TextFieldProps> = ({
   label,
   onChange,
   onSubmit,

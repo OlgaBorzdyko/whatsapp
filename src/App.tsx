@@ -1,16 +1,23 @@
-import { CssBaseline, ThemeProvider } from '@mui/material'
-import { RouterProvider } from 'react-router-dom'
-import theme from 'theme'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
-import routesList from './routes/RoutesList'
+import AuthorizationPage from './pages/AuthorizationPage'
+import ChatPage from './pages/ChatPage'
 
-const App = () => {
-    console.log(255)
+const queryClient = new QueryClient()
+
+function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <RouterProvider router={routesList} />
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <Router>
+        <Routes>
+          <Route element={<AuthorizationPage />} index />
+          <Route element={<ChatPage />} path="/chat/:id" />
+        </Routes>
+      </Router>
+      <ReactQueryDevtools />
+    </QueryClientProvider>
   )
 }
 

@@ -1,14 +1,14 @@
-import React from 'react'
-import AuthorizationResponse from '../services/fetch'
+import AuthorizationComponent from '../services/authorization/AuthorizationComponent'
 
-
-
-const AuthorizationPage = ({ userId, userToken }: { userId: string, userToken: string}) => {
-    return (
-        <div>
-            <AuthorizationResponse  userId={userId} userToken={userToken} />
-        </div>
-    )
+const AuthorizationPage = () => {
+  console.log('AuthorizationPage rendered')
+  return (
+    <div>
+      <div>
+        <AuthorizationComponent />
+      </div>
+    </div>
+  )
 }
 
 export default AuthorizationPage
