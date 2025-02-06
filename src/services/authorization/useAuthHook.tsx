@@ -2,16 +2,22 @@ import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import { useEffect } from 'react'
 
+export interface UserStatusData {
+  idInstance: string
+  apiTokenInstance: string
+}
+
 const getUserStatusData = async ({
   userId,
   userToken
 }: {
   userId: string
   userToken: string
-}) => {
-  return await axios.get(
+}): Promise<UserStatusData> => {
+  const response = await axios.get(
     `https://api.greenapi.com/waInstance${userId}/getSettings/${userToken}`
   )
+  return response.data
 }
 
 export const useAuthHook = ({
@@ -21,7 +27,7 @@ export const useAuthHook = ({
   userId: string
   userToken: string
 }) => {
-  const { data, isLoading, isSuccess, isError } = useQuery({
+  const { data, isPending, isSuccess, isError } = useQuery({
     queryKey: ['getSettings', userId],
     queryFn: () => getUserStatusData({ userId, userToken }),
     enabled: !!userId && !!userToken
@@ -30,8 +36,8 @@ export const useAuthHook = ({
     if (isSuccess) console.log('Data fetched successfully', data)
   }, [isSuccess, data])
   useEffect(() => {
-    if (!isError) console.log('Data fetching error')
+    if (isError) console.log('Data fetching error')
   }, [isError])
 
-  return { data, isLoading, isError }
+  return { data, isPending, isError, isSuccess }
 }

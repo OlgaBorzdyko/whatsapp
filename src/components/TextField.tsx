@@ -1,31 +1,34 @@
 import { Grid, TextField } from '@mui/material'
-import { FC } from 'react'
+import React, { FC } from 'react'
+import { UseFormRegisterReturn } from 'react-hook-form'
+
 interface TextFieldProps {
   label?: string
-  onChange(value: string): void
-  onSubmit(): void
-  value: string
+  error?: boolean
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
+  register: UseFormRegisterReturn
 }
+
 export const TextFieldComponent: FC<TextFieldProps> = ({
   label,
-  onChange,
-  onSubmit,
-  value
+  error,
+  register
 }) => (
   <Grid item md={12} xs={12}>
     <TextField
+      error={error}
       fullWidth
       label={label}
-      onChange={(e) => onChange(e.target.value)}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter') {
-          onSubmit()
-        }
-      }}
+      {...register}
       size="small"
-      value={value}
       variant="outlined"
     />
   </Grid>
 )
 export default TextFieldComponent
+
+//onKeyDown={(e) => {
+//       }}
+//if (e.key === 'Enter') {
+//           onSubmit()
+//         }
