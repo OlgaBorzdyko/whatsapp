@@ -1,8 +1,10 @@
+import React from 'react'
 import { useForm } from 'react-hook-form'
 
 import TextField from '../../components/TextField'
+import CreateChat from '../chat/CreateChat'
 
-interface FormDataProps {
+export interface FormDataProps {
   userId: string
   userToken: string
 }
@@ -10,17 +12,17 @@ interface FormDataProps {
 const AuthorizationComponent = () => {
   const {
     register,
-    handleSubmit,
-    formState: { errors }
+    formState: { errors },
+    watch
   } = useForm<FormDataProps>()
 
-  const onSubmit = (data: FormDataProps) => {
-    console.log(data)
-  }
+
+  const userId = watch('userId')
+  const userToken = watch('userToken')
 
   return (
     <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form>
         <TextField
           error={!!errors.userId}
           label="Введите ваш ID"
@@ -32,8 +34,7 @@ const AuthorizationComponent = () => {
           label="Введите ваш токен"
           register={register('userToken', { required: 'Введите токен' })}
         />
-
-        <button type="submit">Создать чат</button>
+        <CreateChat userId={userId} userToken={userToken} />
       </form>
     </div>
   )

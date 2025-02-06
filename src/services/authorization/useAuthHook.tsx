@@ -9,7 +9,7 @@ export interface UserStatusData {
 
 const getUserStatusData = async ({
   userId,
-  userToken
+  userToken,
 }: {
   userId: string
   userToken: string
@@ -22,15 +22,15 @@ const getUserStatusData = async ({
 
 export const useAuthHook = ({
   userId,
-  userToken
+  userToken,
 }: {
   userId: string
   userToken: string
 }) => {
-  const { data, isPending, isSuccess, isError } = useQuery({
+  const { data, isPending, isSuccess, isError, refetch } = useQuery({
     queryKey: ['getSettings', userId],
     queryFn: () => getUserStatusData({ userId, userToken }),
-    enabled: !!userId && !!userToken
+    enabled: false
   })
   useEffect(() => {
     if (isSuccess) console.log('Data fetched successfully', data)
@@ -39,5 +39,5 @@ export const useAuthHook = ({
     if (isError) console.log('Data fetching error')
   }, [isError])
 
-  return { data, isPending, isError, isSuccess }
+  return { data, isPending, isError, isSuccess, refetch }
 }
