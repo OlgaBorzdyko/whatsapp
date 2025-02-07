@@ -10,26 +10,43 @@ export interface UserStatusData {
 const getUserStatusData = async ({
   userId,
   userToken,
+  userPhoneNumber
 }: {
   userId: string
   userToken: string
-}): Promise<UserStatusData> => {
-  const response = await axios.get(
+  userPhoneNumber: string
+}): Promise<UserStatusData | undefined> => {
+  //const url = `https://api.greenapi.com/waInstance${userId}/checkWhatsapp/${userToken}`
+
+  //const checkPhoneNumber = await axios.post(url, {
+    //phoneNumber: userPhoneNumber
+  //})
+  //console.log('с номером', checkPhoneNumber.data)
+
+  //if (!checkPhoneNumber.data.exists) {
+    //console.error('Номер не зарегистрирован в WhatsApp')
+    //return
+  //}
+
+  const settingsResponse = await axios.get(
     `https://api.greenapi.com/waInstance${userId}/getSettings/${userToken}`
   )
-  return response.data
+
+  return settingsResponse.data
 }
 
 export const useAuthHook = ({
   userId,
   userToken,
+  userPhoneNumber
 }: {
   userId: string
   userToken: string
+  userPhoneNumber: string
 }) => {
   const { data, isPending, isSuccess, isError, refetch } = useQuery({
     queryKey: ['getSettings', userId],
-    queryFn: () => getUserStatusData({ userId, userToken }),
+    queryFn: () => getUserStatusData({ userId, userToken, userPhoneNumber }),
     enabled: false
   })
   useEffect(() => {
