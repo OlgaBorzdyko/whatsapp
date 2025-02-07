@@ -1,12 +1,13 @@
 import { styled } from '@mui/material'
 import { Outlet } from 'react-router-dom'
 
-const DefaultLayoutRoot = styled('div')(({ theme }) => ({
-  backgroundColor: theme.palette.background.paper,
-  display: 'flex',
-  height: '100%',
+const DefaultLayoutRoot = styled('div')(() => ({
+  backgroundImage: 'url(/whatsapp-bg2.png)',
+  display: 'grid',
   overflow: 'hidden',
-  width: '100%'
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  height: '100vh'
 }))
 
 const DefaultLayout = () => (
