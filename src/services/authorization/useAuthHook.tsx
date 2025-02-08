@@ -19,13 +19,13 @@ const getUserStatusData = async ({
   //const url = `https://api.greenapi.com/waInstance${userId}/checkWhatsapp/${userToken}`
 
   //const checkPhoneNumber = await axios.post(url, {
-    //phoneNumber: userPhoneNumber
+  //phoneNumber: userPhoneNumber
   //})
   //console.log('с номером', checkPhoneNumber.data)
 
   //if (!checkPhoneNumber.data.exists) {
-    //console.error('Номер не зарегистрирован в WhatsApp')
-    //return
+  //console.error('Номер не зарегистрирован в WhatsApp')
+  //return
   //}
 
   const settingsResponse = await axios.get(

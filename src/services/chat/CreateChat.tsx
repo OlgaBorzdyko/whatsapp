@@ -1,6 +1,7 @@
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import { StyledSubmitButton } from '../authorization/StyledAuthorizationComponent'
 import { useAuthHook } from '../authorization/useAuthHook'
 
 const CreateChat = ({
@@ -27,12 +28,9 @@ const CreateChat = ({
   }, [response.isSuccess, response.isError, navigate])
 
   return (
-    <div>
-      {response.isPending && <p>Загрузка...</p>}
-      <button onClick={handleCreateChat} type="button">
-        Создать чат
-      </button>
-    </div>
+    <StyledSubmitButton onClick={handleCreateChat} type="button">
+      Создать чат
+    </StyledSubmitButton>
   )
 }
 

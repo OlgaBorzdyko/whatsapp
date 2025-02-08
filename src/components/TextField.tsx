@@ -8,15 +8,17 @@ interface TextFieldProps {
   label?: string
   error?: boolean
   register: ReturnType<UseFormRegister<FormDataProps>>
+  style?: React.CSSProperties
 }
 
 export const TextFieldComponent: FC<TextFieldProps> = ({
   label,
   error,
-  register
+  register,
+  style
 }) => {
   return (
-    <Grid item md={12} xs={12}>
+    <div style={style}>
       <TextField
         error={error}
         fullWidth
@@ -25,7 +27,7 @@ export const TextFieldComponent: FC<TextFieldProps> = ({
         size="small"
         variant="outlined"
       />
-    </Grid>
+    </div>
   )
 }
 export default TextFieldComponent
